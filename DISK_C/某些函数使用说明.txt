@@ -1,0 +1,71 @@
+1.bar画一个填充矩形 填充颜色由 setfillstyle决定
+rectangle画一个空矩形框，线条颜色由setcolor决定
+
+2.puthz（int x,int y,char *s, int flag, int part, int color）
+					flag:字体大小16，24，32，48  
+					part: 汉字字体，一般30
+
+需要添加头文件 #include"hz.h"
+
+3.  
+请问clrmous和savebkmouse是什么意思
+@匿名消息 clrmous清除鼠标的图像，并且把原来的背景贴上去
+savebkmouse，就是把鼠标覆盖的背景先存到全局变量buffer里面
+
+3.5  outtextxy(int x, int y, char*); 功能：从(x,y)处开始显示一个字符串（字母和数字）
+	字体颜色由setcolor决定	
+	
+
+4.settextstyle() 设置文本型式函数
+参数表一般都是（0，0，x），字体大小就是x，封顶是10，x越大，字体越大
+
+
+功能：　函数settextstyle() 设置图形文本当前字体、文本显示方向（水平显示或垂直显示）以及字符大小。
+
+用法：　此函数调用方式为void settextstyle(int font,int direction,int charsize);
+
+font为文本字体参数
+DEFAULT＿FONT               0         8*8点阵字型（缺省字体）
+TRIPLEx_FONT                1         笔划式三倍字型（三倍字体）
+SMALL_FONT                  2         笔划式小字型(小字体)
+SANS_SERIF_FONT             3         笔划式字(Sanserif字体)
+GOTHIC_FONT                 4         笔划黑体字型(哥特体)
+
+direction为文本显示方向（0：水平方向，1：垂直方向），
+charsize为字符大小参数，0-10，数字越大，放大倍数越大。
+
+5. setlinestyle(int linestyle, unsigned pattern,int width);
+			  linestyle:线型：0 实线；1 虚线
+			  pattern :如果不是自定义线型，就用0，（一般都是0）
+			   width:线宽： 1  一像素宽； 3  两像素宽
+
+6.setfillstyle() 设置填充图样和颜色函数
+void setfillstyle(int pattern,int color)；
+		pattern 用来填充的图样： 1  用实填充色填充（一般用1）； 4 用粗线填充...
+		color
+
+void floodfill(int X,int Y, int border_color);
+	洪泛函数，填充封闭图形颜色用的，只要取其中的一个点，
+	再设置相应的颜色即可将封闭图形的边框涂上颜色,同时将这个封闭图形内部图上setfillstyle()设置的颜色
+
+7.setcolor() 设置画笔颜色
+0 - BLACK 黑			1 - BLUE 蓝
+ 2 - GREEN 绿		3 - CYAN 青
+ 4 - RED 红			5 - MAGENTA 洋红
+ 6 - BROWN 棕		7 - LIGHTGRAY 淡灰
+ 8 - DARKGRAY 深灰		9 - LIGHTBLUE 淡兰 
+10 - LIGHTGREEN 淡绿	11 - LIGHTCYAN 淡青
+ 12 - LIGHTRED 淡红	13 - LIGHTMAGENTA 淡洋红
+ 14 - YELLOW 黄		15 - WHITE 白
+
+
+8.getimage() 保存图像函数
+功能： 函数getimage()保存左上角与右下角所定义的屏幕上像素图形到指定的内存区域。
+
+用法： 该函数调用方式为void getimage(int left,int top,int right,int bottom,void *buf);
+
+说明： 函数中参数(left,top)为要保存的图像屏幕的左上角，(right,bottom)为其右下角，buf指向保存图像的内存地址。调用getimage()保存屏幕图像，可用imagesize()函数确定保存图像所需字节数，再用malloc()函数分配存储图像的内存(内存分配必须小于64KB)，【malloc（）函数可以开辟一个内存空间，并由无类型指针buffer指向这块区域】还可以用下面函数putimage()输出getimage()保存的屏幕图像。
+
+这个函数对应的头文件为graphics.h
+
+返回值： 无

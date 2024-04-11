@@ -1,0 +1,31 @@
+{
+	// Place your SRC 工作区 snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Print to console": {
+		"prefix": "funcnote",
+		"body": [
+			"/********************************",
+			" * FUNCTION:", // 函数名称
+			" * DESCRIPTION:", // 函数功能、性能等的描述
+			" * INPUT:", // 输入参数说明，包括每个参数的作用、取值说明及参数间关系。
+			" * RETURN:", // 函数返回值的说明
+			" * OTHERS:", // 其它说明
+			" ********************************/"
+		],
+		"description": "function notes template"
+	}
+}

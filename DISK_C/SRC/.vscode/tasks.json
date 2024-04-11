@@ -1,0 +1,68 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "C/C++: g++.exe 生成活动文件",
+			"command": "C:/Program Files/mingw64/bin/g++.exe",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-g",
+				"${file}",
+				"-o",
+				"${fileDirname}\\bin\\${fileBasenameNoExtension}.exe",
+				"-Wall", // 开启额外警告
+				"-fexec-charset=GBK",
+				// 生成的程序使用***GBK***编码，不加这一条会导致Win下输出中文乱码；繁体系统改成BIG5
+				"-lgraphics64",
+				"-luuid",
+				"-lmsimg32",
+				"-lgdi32",
+				"-limm32",
+				"-lole32",
+				"-loleaut32",
+				"-lwinmm",
+				"-lgdiplus",
+				"-D__USE_MINGW_ANSI_STDIO",
+				// 用MinGW写C时留着，否则不需要，用于支持printf的%zd和%Lf等
+			],
+			"options": {
+				"cwd": "C:/Program Files/mingw64/bin"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "编译器: \"C:/Program Files/mingw64/bin/g++.exe\""
+		},
+		{ //这个大括号里是‘运行(run)’任务，一些设置与上面的构建任务性质相同
+			"label": "run",
+			"type": "shell",
+			"dependsOn": "C/C++: g++.exe 生成活动文件", //任务依赖，因为要运行必须先构建，所以执行这个任务前必须先执行build任务，
+			"command": "${fileDirname}\\bin\\${fileBasenameNoExtension}.exe", //执行exe文件，只需要指定这个exe文件在哪里就好
+			"group": {
+				"kind": "test", //这一组是‘测试’组，将run任务放在test组里方便我们用快捷键执行
+				"isDefault": true
+			},
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": true, //这个就设置为true了，运行任务后将焦点聚集到终端，方便进行输入
+				"panel": "new"
+			}
+		},
+		{
+			"label": "open BorlandC++ 3.1", //打开BC31任务
+			"type": "shell",
+			"command": "cd C:\\BC31 ; wscript C:\\BC31\\BC31.vbs"
+		},
+		{
+			"label": "close and open BorlandC++ 3.1", //关闭BC31任务
+			"type": "shell",
+			"command": "TASKKILL /IM DOSbox.exe ; cd C:\\BC31 ; wscript C:\\BC31\\BC31.vbs"
+		},
+	]
+}
